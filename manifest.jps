@@ -4,8 +4,8 @@ version: 1.7
 name: Odoo Community Edition
 logo: /images/odoo-logo.png
 globals:
-  db_user: odoo1
-  db_pswd: catksfoib5fxqedl
+  db_user: doadmin
+  db_pswd: rtqloqhfwhf7ho77
   master_pswd: odoo1
   odoo_config: /etc/odoo/odoo.conf
   openerp_config: /etc/odoo/openerp-server.conf
@@ -57,10 +57,10 @@ nodes:
   cloudlets: 16
   nodeGroup: cp
   env:
-   PORT: 25060
    HOST: private-db-postgresql-nyc3-23686-do-user-4526512-0.b.db.ondigitalocean.com
-   USER: odoo1
-   PASSWORD: catksfoib5fxqedl
+   PORT: 25060
+   USER: doadmin
+   PASSWORD: rtqloqhfwhf7ho77
 
 onInstall:
   - if ('${env.protocol}' == 'https'): 

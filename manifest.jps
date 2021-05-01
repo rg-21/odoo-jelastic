@@ -2,12 +2,10 @@ type: install
 id: odoo-ce
 version: 1.7
 name: Odoo Community Edition
-homepage: http:///www.odoo.com/
-baseUrl: https://raw.githubusercontent.com/jelastic-jps/odoo/master
 logo: /images/odoo-logo.png
 globals:
   db_user: odoo1
-  db_pswd: odoo1
+  db_pswd: catksfoib5fxqedl
   master_pswd: odoo1
   odoo_config: /etc/odoo/odoo.conf
   openerp_config: /etc/odoo/openerp-server.conf
@@ -54,21 +52,15 @@ nodes:
   displayName: Balancer
   cloudlets: 16
   nodeGroup: bl
-- image: odoo:${settings.version}
+- image: odoo:latest
   displayName: App Server
   cloudlets: 16
   nodeGroup: cp
-  links: sqldb:db
   env:
-    JELASTIC_EXPOSE: 8069
-  #- image: postgres:10
-  #cloudlets: 16
-  #nodeGroup: sqldb
-  #displayName: Postgres DB
-  env:
-    POSTGRES_USER: odoo1
-    POSTGRES_PASSWORD: catksfoib5fxqedl
-    POSTGRES_DB: postgres
+   PORT: 25060
+   HOST: private-db-postgresql-nyc3-23686-do-user-4526512-0.b.db.ondigitalocean.com
+   USER: odoo1
+   PASSWORD: catksfoib5fxqedl
 
 onInstall:
   - if ('${env.protocol}' == 'https'): 

@@ -6,9 +6,9 @@ homepage: http:///www.odoo.com/
 baseUrl: https://raw.githubusercontent.com/jelastic-jps/odoo/master
 logo: /images/odoo-logo.png
 globals:
-  db_user: odoo-${fn.random(1000)}
-  db_pswd: ${fn.password}
-  master_pswd: ${fn.password}
+  db_user: odoo1
+  db_pswd: odoo1
+  master_pswd: odoo1
   odoo_config: /etc/odoo/odoo.conf
   openerp_config: /etc/odoo/openerp-server.conf
 targetRegions:
@@ -61,13 +61,13 @@ nodes:
   links: sqldb:db
   env:
     JELASTIC_EXPOSE: 8069
-- image: postgres:10
-  cloudlets: 16
-  nodeGroup: sqldb
-  displayName: Postgres DB
+  #- image: postgres:10
+  #cloudlets: 16
+  #nodeGroup: sqldb
+  #displayName: Postgres DB
   env:
-    POSTGRES_USER: ${globals.db_user}
-    POSTGRES_PASSWORD: ${globals.db_pswd}
+    POSTGRES_USER: odoo1
+    POSTGRES_PASSWORD: catksfoib5fxqedl
     POSTGRES_DB: postgres
 
 onInstall:

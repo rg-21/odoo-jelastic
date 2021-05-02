@@ -69,7 +69,7 @@ nodes:
   db_user = doadmin
   db_password = rtqloqhfwhf7ho77
   db_name = odoo1
-  db_template = template0
+  db_template =
 
 onInstall:
   - if ('${env.protocol}' == 'https'): 

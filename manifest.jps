@@ -59,17 +59,17 @@ nodes:
   nodeGroup: cp
   
   env:
-  addons_path = /mnt/extra-addons
-  data_dir = /var/lib/odoo
-  email_from = devops1@rg1.us
-  admin_passwd = odoo1
-  db_host = private-db-postgresql-nyc3-23686-do-user-4526512-0.b.db.ondigitalocean.com
-  db_port = 25060
-  db_sslmode = require
-  db_user = doadmin
-  db_password = rtqloqhfwhf7ho77
-  db_name = odoo1
-  db_template =
+    addons_path = /mnt/extra-addons
+    data_dir = /var/lib/odoo
+    email_from = devops1@rg1.us
+    admin_passwd = odoo1
+    db_host = private-db-postgresql-nyc3-23686-do-user-4526512-0.b.db.ondigitalocean.com
+    db_port = 25060
+    db_sslmode = require
+    db_user = doadmin
+    db_password = rtqloqhfwhf7ho77
+    db_name = odoo1
+    db_template =
 
 onInstall:
   - if ('${env.protocol}' == 'https'): 

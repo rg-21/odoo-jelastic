@@ -70,6 +70,9 @@ nodes:
     db_password = rtqloqhfwhf7ho77
     db_name = odoo1
     db_template =
+    dbfilter = .*
+    demo = True  
+    debug_mode = False
     
     limit_memory_hard = 1677721600
     limit_memory_soft = 629145600
@@ -78,6 +81,11 @@ nodes:
     limit_time_real = 1200
     max_cron_threads = 1
     workers = 8
+    
+   
+   
+
+  
 
 onInstall:
   - if ('${env.protocol}' == 'https'): 

@@ -2,12 +2,13 @@ type: install
 id: odoo-ce
 version: 1.7
 name: Odoo Community Edition
+homepage: http:///www.odoo.com/
+baseUrl: https://raw.githubusercontent.com/jelastic-jps/odoo/master
 logo: /images/odoo-logo.png
-
 globals:
-  db_user: doadmin
-  db_pswd: rtqloqhfwhf7ho77
-  master_pswd: odoo1
+  db_user: odoo-${fn.random(1000)}
+  db_pswd: postgres
+  master_pswd: Devops123!!
   odoo_config: /etc/odoo/odoo.conf
   openerp_config: /etc/odoo/openerp-server.conf
 targetRegions:
@@ -32,7 +33,7 @@ onBeforeInit: |
     settings: {
       fields: [{
           name: "version",
-          caption: "Odoo Version",
+          caption: "Oddo Version",
           type: "list",
           values: ver,
           "default": def
@@ -53,24 +54,19 @@ nodes:
   displayName: Balancer
   cloudlets: 16
   nodeGroup: bl
-  
 - image: odoo:latest
   displayName: App Server
   cloudlets: 16
   nodeGroup: cp
-  
-  environment:
-  - addons_path = /mnt/extra-addons
-  - data_dir = /var/lib/odoo
+  links: sqldb:db
+  env:
+    JELASTIC_EXPOSE: 8069
+  #- addons_path = /mnt/extra-addons
+  #- data_dir = /var/lib/odoo
   - email_from = devops1@rg1.us
   - admin_passwd = odoo1
-  - db_host = db-postgresql-nyc3-23686-do-user-4526512-0.b.db.ondigitalocean.com
-  - db_port = 25060
-  - db_sslmode = require
-  - db_user = doadmin
-  - db_password = rtqloqhfwhf7ho77
-  - db_name =
-  - db_template =
+  #- db_name =
+  #- db_template =
   - dbfilter = .*
   - demo = True  
   - debug_mode = False
@@ -80,7 +76,15 @@ nodes:
   - limit_time_cpu = 600
   - limit_time_real = 1200
   - max_cron_threads = 1
-  - workers = 8
+  - workers = 8    
+- image: postgres:10
+  cloudlets: 16
+  nodeGroup: sqldb
+  displayName: Postgres DB
+  env:
+    POSTGRES_USER: ${globals.db_user}
+    POSTGRES_PASSWORD: ${globals.db_pswd}
+    POSTGRES_DB: postgres
 
 onInstall:
   - if ('${env.protocol}' == 'https'): 
@@ -103,3 +107,4 @@ success: |-
   Please open [${env.url}](${env.url}) and complete the installation. 
     
   **Master Password:** ${globals.master_pswd} 
+

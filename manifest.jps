@@ -36,7 +36,7 @@ onBeforeInit: |
           caption: "Oddo Version",
           type: "list",
           values: ver,
-          "default": def
+          "default": latest
       }]    
     }
   };
@@ -61,22 +61,22 @@ nodes:
   links: sqldb:db
   env:
     JELASTIC_EXPOSE: 8069
-  #addons_path = /mnt/extra-addons
-  #data_dir = /var/lib/odoo
     email_from: devops1@rg1.us
     admin_passwd: odoo1
-  #db_name =
-  #db_template =
-    dbfilter: .*
-    demo: True  
-    debug_mode: False
-  #limit_memory_hard = 1677721600
-  #limit_memory_soft = 629145600
-  #limit_request = 8192
-  #limit_time_cpu = 600
-  #limit_time_real = 1200
-  #max_cron_threads = 1
-  #workers = 8    
+    #addons_path = /mnt/extra-addons
+    #data_dir = /var/lib/odoo    
+    #db_name =
+    #db_template =
+    #dbfilter: .*
+    #demo: True  
+    #debug_mode: False
+    #limit_memory_hard = 1677721600
+    #limit_memory_soft = 629145600
+    #limit_request = 8192
+    #limit_time_cpu = 600
+    #limit_time_real = 1200
+    #max_cron_threads = 1
+    #workers = 8    
 - image: postgres:10
   cloudlets: 16
   nodeGroup: sqldb
